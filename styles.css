@@ -186,7 +186,35 @@ body{
 .smallprint{list-style:none; padding:0; margin:1rem 0 0; color:var(--muted); font-size:.9rem}
 .smallprint li{margin:.25rem 0}
 
-.footer{max-width:1100px; margin:2rem auto; padding:0 1rem; color:var(--muted)}
+.footer {
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  margin-top: 2rem;
+  padding: 1.5rem 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-nav a {
+  color: var(--muted);
+  margin-left: 1rem;
+  text-decoration: none;
+}
+
+.footer-nav a:hover {
+  color: var(--text);
+}
+
 
 /* Responsiv */
 @media (max-width:900px){
