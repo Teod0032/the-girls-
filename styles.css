@@ -220,9 +220,15 @@ body{
 
 }
 
-.payment-icon {
+.first-payment-icon {
   height: 55px;
   padding-left: 175px;
+
+}
+
+.payment-icon {
+  height: 55px;
+  padding-left: 10px;
 
 }
 .footer-col h4{
