@@ -28,8 +28,8 @@ body{
   z-index:10;
 }
 .brand img {
-  height: 30px;   /* justér højden så den passer */
-  width: auto;
+  height: auto;   /* justér højden så den passer */
+  width: 150px;
   display: block;
 }
 .nav a{color:var(--muted); text-decoration:none; margin-left:1rem}
