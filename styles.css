@@ -78,8 +78,8 @@ body{
 }
 
 .brand img {
-  height: 30px;   /* justér højden så den passer */
-  width: auto;
+  height: auto;   /* justér højden så den passer */
+  width: 150px;
   display: block;
 }
 
