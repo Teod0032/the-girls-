@@ -86,15 +86,15 @@ body{
 .nav a{color:var(--muted); text-decoration:none; margin-left:1rem}
 .nav a:hover{color:var(--text)}
 
-.shopping-bag-icon {
+.menu-icon {
   display: flex;
   align-items: center;
   gap: 1rem; /* Space between icons */
 }
 
-.shopping-bag-icon img {
-  width: 48px;  /* Justér størrelsen efter behov */
-  height: 48px; /* Justér størrelsen efter behov */
+.menu-icon img {
+  width: 40px;  /* Justér størrelsen efter behov */
+  height: 40px; /* Justér størrelsen efter behov */
   cursor: pointer;
   display: block;
 }
