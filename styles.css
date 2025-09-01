@@ -214,7 +214,10 @@ body{
   max-width:42ch;
   line-height:1.6;
 }
+.payment-icon {
+  height: 55px;
 
+}
 .footer-col h4{
   margin:0 0 .75rem;
   font-size:1rem;
