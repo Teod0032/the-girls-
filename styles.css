@@ -277,10 +277,6 @@ body{
     font-weight: 650;
   
   }
-
-  
-  
-
   
   .first-payment-icon {
     height: 52px;
@@ -334,5 +330,10 @@ body{
     gap: 1rem;
   }
 
-  .gallery{}
+  .gallery{ order: 1; }
+  .details{ order: 2; margin-top: 5rem;}
+
+  .gallery__main{ aspect-ratio: 4/5; width: 100%; object-fit: cover; }
+  .thumbs{ grid-template-columns: repeat(4, 1fr);}
+  .cta{ width: 100%; }
 }
