@@ -1,0 +1,126 @@
+:root{
+  --bg:#f7f7f7;
+  --card:#ffffff;
+  --text:#1f1f1f;
+  --muted:#6b7280;
+  --brand:#111827;
+  --accent:#111;         /* badge/knap */
+  --accent-2:#0f172a;    /* mørk badge */
+  --line:#e5e7eb;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.5;
+}
+
+/* Topbar */
+.topbar{
+  position:sticky; top:0;
+  background:var(--card);
+  border-bottom:1px solid var(--line);
+  padding:0.75rem 1rem;
+  display:flex; align-items:center; gap:1rem; justify-content:space-between;
+  z-index:10;
+}
+.brand{font-size:1.125rem; margin:0}
+.nav a{color:var(--muted); text-decoration:none; margin-left:1rem}
+.nav a:hover{color:var(--text)}
+
+/* Layout */
+.product{
+  max-width:1100px; margin:1.5rem auto; padding:0 1rem;
+  display:grid; grid-template-columns:1.1fr 1fr; gap:2rem;
+}
+.gallery{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:1rem}
+.gallery__main{
+  width:100%; aspect-ratio: 4/5; object-fit:cover; border-radius:10px;
+}
+.thumbs{display:grid; grid-template-columns:repeat(4,1fr); gap:0.5rem; margin-top:0.75rem}
+.thumb{border:1px solid var(--line); border-radius:8px; padding:0; background:#fff; cursor:pointer}
+.thumb img{width:100%; height:100%; object-fit:cover; aspect-ratio:1/1; border-radius:8px}
+.thumb.is-active{outline:2px solid #000}
+
+.details{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:1rem}
+.badges{display:flex; gap:0.5rem; margin-bottom:0.5rem}
+.badge{background:#ef4444; color:#fff; padding:0.25rem 0.5rem; border-radius:999px; font-size:0.8rem}
+.badge--dark{background:var(--accent-2)}
+
+.title{margin:.25rem 0 0; font-size:1.5rem}
+.subtitle{margin:.1rem 0 1rem; color:var(--muted)}
+
+.price{display:flex; align-items:center; gap:.5rem; margin:.25rem 0 1rem}
+.price__now{font-size:1.4rem}
+.price__before{color:var(--muted)}
+
+.color {
+  margin: 1rem 0;
+}
+
+.color-options {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.color-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: #fff;
+  padding: 0.25rem;
+  cursor: pointer;
+  width: 120px; /* justér bredden hvis du vil */
+}
+
+.color-option img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.color-option span {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.color-option.is-active {
+  border-color: #000;
+}
+
+
+.delivery{display:flex; gap:.5rem; color:var(--muted)}
+
+.sizes{margin:1rem 0}
+.sizes__list{display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.25rem}
+.size{
+  border:1px solid var(--line); background:#fff; border-radius:8px;
+  padding:.5rem .75rem; cursor:pointer;
+}
+.size.is-active, .size:focus{outline:2px solid #000}
+
+.cta{
+  width:100%; padding:0.9rem; margin:.5rem 0 0;
+  border:none; border-radius:10px; cursor:pointer;
+  background:var(--accent); color:#fff; font-size:1rem;
+}
+.cta:hover{opacity:.9}
+
+.feedback{min-height:1.25rem; color:green; margin:.4rem 0 0}
+
+.smallprint{list-style:none; padding:0; margin:1rem 0 0; color:var(--muted); font-size:.9rem}
+.smallprint li{margin:.25rem 0}
+
+.footer{max-width:1100px; margin:2rem auto; padding:0 1rem; color:var(--muted)}
+
+/* Responsiv */
+@media (max-width:900px){
+  .product{grid-template-columns:1fr}
+}
