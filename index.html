@@ -7,11 +7,38 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Top Promotional Bars -->
+  <div class="pre-header">
+    <a href="#" class="promo-banner">
+      Bahne fejrer 50 års jubilæum! &rarr;
+    </a>
+    <div class="site-info-bar">
+      <div class="info-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.42 2.456l-2.234-1.343zM13 3.5l-2.404-.961L4.16 4.461l2.404.961L13 3.5zM1.5 4.981v5.5a1.5 1.5 0 0 0 .732 1.319l3.5 2a1.5 1.5 0 0 0 1.536 0l3.5-2A1.5 1.5 0 0 0 11.5 10.48V4.981l-3.5 1.75-.002-.001L8 6.981 4.5 5.231v5.25a.5.5 0 0 0 .5.5h2a.5.5 0 0 1 0 1h-2A1.5 1.5 0 0 1 4 10.481V5.231L1.5 4.981z"/>
+          <path d="M12.5 9.5a.5.5 0 0 1 .5.5v2.5a.5.5 0 0 1-1 0V10a.5.5 0 0 1 .5-.5m-1 1.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+        </svg>
+        <span>Fri fragt over 499 kr.</span>
+      </div>
+      <div class="info-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+        </svg>
+        <span>Levering 1-3 hverdage</span>
+      </div>
+      <div class="info-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.37 2.37 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 5.875 8a2.37 2.37 0 0 1-1.625-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h12V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5z"/>
+        </svg>
+        <span>Shop med Click & Collect</span>
+      </div>
+    </div>
+  </div>
+
   <header class="topbar">
     <a href="index.html" class="brand">
-  <img src="img/logo.jpg" alt="Bahne logo" />
-</a>
-
+      <img src="img/logo.jpg" alt="Bahne logo" />
+    </a>
     <nav class="nav">
       <a href="#">Mode</a>
       <a href="#">Bolig</a>
@@ -58,19 +85,18 @@
       </div>
 
       <div class="color">
-  <span>Farve:</span>
-  <div class="color-options">
-    <button class="color-option is-active" data-color="sort">
-      <img src="img/top-black-1.jpg" alt="Sort bluse" />
-      <span>Sort</span>
-    </button>
-    <button class="color-option" data-color="hvid">
-      <img src="img/top-white-1.jpg" alt="Hvid bluse" />
-      <span>Hvid</span>
-    </button>
-  </div>
-</div>
-
+        <span>Farve:</span>
+        <div class="color-options">
+          <button class="color-option is-active" data-color="sort">
+            <img src="img/top-black-1.jpg" alt="Sort bluse" />
+            <span>Sort</span>
+          </button>
+          <button class="color-option" data-color="hvid">
+            <img src="img/top-white-1.jpg" alt="Hvid bluse" />
+            <span>Hvid</span>
+          </button>
+        </div>
+      </div>
 
       <div class="delivery">
         <span>Levering:</span>
@@ -105,3 +131,4 @@
   <script src="app.js"></script>
 </body>
 </html>
+
