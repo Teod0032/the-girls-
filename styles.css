@@ -186,57 +186,68 @@ body{
 .smallprint{list-style:none; padding:0; margin:1rem 0 0; color:var(--muted); font-size:.9rem}
 .smallprint li{margin:.25rem 0}
 
-.footer {
-  background: var(--card);
-  border-top: 1px solid var(--line);
-  margin-top: 2rem;
-  padding: 1.5rem 1rem;
-  color: var(--muted);
-  font-size: 0.9rem;
+.site-footer{
+  background:#f6f5f2;            /* lys tone som i eksemplet */
+  border-top:1px solid var(--line);
+  margin-top:2rem;
 }
 
-.footer-content {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
+.footer-grid{
+  max-width:1100px;
+  margin:0 auto;
+  padding:2rem 1rem 1.5rem;
+  display:grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr; /* brand + 3 kolonner */
+  gap:2rem 3rem;
 }
 
-.footer-nav a {
-  color: var(--muted);
-  margin-left: 1rem;
-  text-decoration: none;
+.footer-brand .footer-logo{
+  height:auto;
+  width: 250px;;
+  display:block;
+  margin-bottom:1rem;
+}
+.footer-brand p{
+  color:var(--text);
+  opacity:.85;
+  margin:0;
+  max-width:42ch;
+  line-height:1.6;
 }
 
-.footer-nav a:hover {
-  color: var(--text);
+.footer-col h4{
+  margin:0 0 .75rem;
+  font-size:1rem;
+  color:var(--muted);
+  letter-spacing:.2px;
 }
 
+.footer-col a{
+  display:block;
+  text-decoration:none;
+  color:var(--text);
+  padding:.35rem 0;
+}
+.footer-col a:hover{ opacity:.8; }
+
+.footer-bottom{
+  border-top:1px solid var(--line);
+  padding:1rem;
+  text-align:center;
+  color:var(--muted);
+  font-size:.9rem;
+}
 
 /* Responsiv */
-@media (max-width:900px){
-  .product{grid-template-columns:1fr}
-  
-  .site-info-bar {
-    gap: 0.5rem 1.5rem; /* Smaller gap for smaller screens */
-    font-size: 0.8rem;
+@media (max-width: 900px){
+  .footer-grid{
+    grid-template-columns: 1fr 1fr;   /* 2 kolonner */
   }
-
-  .info-item:not(:first-child)::before {
-    content: "•";
-    margin-right: 1.5rem;
-    margin-left: 0;
-  }
+  .footer-brand{ grid-column: 1 / -1; }
 }
-
-@media (max-width: 500px) {
-  /* On very small screens, remove the dot separators */
-  .info-item:not(:first-child)::before {
-    content: "";
-    margin: 0;
+@media (max-width: 600px){
+  .footer-grid{
+    grid-template-columns: 1fr;       /* 1 kolonne */
   }
 }
 
