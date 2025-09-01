@@ -217,6 +217,11 @@ body{
 
 .payment-text{
   padding-left: 180px;
+  margin:0 0 .75rem;
+  font-size:1rem;
+  color:var(--muted);
+  letter-spacing:.2px;
+  font-weight: 650;
 
 }
 
