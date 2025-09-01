@@ -1,20 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rufina:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Second Female – Limona Top</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <h1>Hello Denmark</h1>
-    <h2>Her har vi en underoverskrift</h2>
-    <p>Dette er en tekst som beskriver billedet.......</p>
-    <img src="images/goat.png" alt="fejl">
- src="index.js">
+  <header class="topbar">
+    <h1 class="brand">Bahne</h1>
+    <nav class="nav">
+      <a href="#">Mode</a>
+      <a href="#">Bolig</a>
+      <a href="#">Tilbud</a>
+      <a href="#">Nyheder</a>
+    </nav>
+  </header>
+
+  <main class="product">
+    <!-- Venstre: billeder -->
+    <section class="gallery">
+      <img id="mainImage" class="gallery__main" src="img/top-black-1.jpg" alt="Limona Top i sort" />
+      <div class="thumbs">
+        <button class="thumb is-active" data-img="img/top-black-1.jpg">
+          <img src="img/top-black-1.jpg" alt="Front" />
+        </button>
+        <button class="thumb" data-img="img/top-black-2.jpg">
+          <img src="img/top-black-2.jpg" alt="Detalje" />
+        </button>
+        <button class="thumb" data-img="img/top-black-3.jpg">
+          <img src="img/top-black-3.jpg" alt="Side" />
+        </button>
+        <button class="thumb" data-img="img/top-black-4.jpg">
+          <img src="img/top-black-4.jpg" alt="Model" />
+        </button>
+      </div>
+    </section>
+
+    <!-- Højre: oplysninger -->
+    <section class="details">
+      <div class="badges">
+        <span class="badge">Spar 40%</span>
+        <span class="badge badge--dark">OUTLET</span>
+      </div>
+
+      <h2 class="title">Second Female</h2>
+      <p class="subtitle">Limona Top • sort</p>
+
+      <div class="price">
+        <strong class="price__now">359,40 kr.</strong>
+        <s class="price__before">599,00 kr.</s>
+      </div>
+
+      <div class="color">
+  <span>Farve:</span>
+  <div class="color-options">
+    <button class="color-option is-active" data-color="sort">
+      <img src="img/top-black-1.jpg" alt="Sort bluse" />
+      <span>Sort</span>
+    </button>
+    <button class="color-option" data-color="hvid">
+      <img src="img/top-white-1.jpg" alt="Hvid bluse" />
+      <span>Hvid</span>
+    </button>
+  </div>
+</div>
+
+
+      <div class="delivery">
+        <span>Levering:</span>
+        <span>På lager</span>
+      </div>
+
+      <div class="sizes">
+        <span>Størrelse:</span>
+        <div class="sizes__list" role="group" aria-label="Vælg størrelse">
+          <button class="size" data-size="XS">XS</button>
+          <button class="size is-active" data-size="S">S</button>
+          <button class="size" data-size="M">M</button>
+          <button class="size" data-size="L">L</button>
+          <button class="size" data-size="XL">XL</button>
+        </div>
+      </div>
+
+      <button id="addToCart" class="cta">Tilføj til kurv</button>
+      <p id="feedback" class="feedback" aria-live="polite"></p>
+
+      <ul class="smallprint">
+        <li>Gratis retur i butik</li>
+        <li>1-3 hverdages levering</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>© Bahne (demo-side)</small>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
+
 
