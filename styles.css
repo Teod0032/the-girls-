@@ -27,7 +27,11 @@ body{
   display:flex; align-items:center; gap:1rem; justify-content:space-between;
   z-index:10;
 }
-.brand{font-size:1.125rem; margin:0}
+.brand img {
+  height: 30px;   /* justér højden så den passer */
+  width: auto;
+  display: block;
+}
 .nav a{color:var(--muted); text-decoration:none; margin-left:1rem}
 .nav a:hover{color:var(--text)}
 
