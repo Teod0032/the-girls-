@@ -83,8 +83,43 @@ body{
   display: block;
 }
 
+/* Burgermenu starterher */ 
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+.burger .bar,
+.burger .bar::before,
+.burger .bar::after {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: black;
+  margin: 6px auto;
+  content: "";
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+  .nav {
+    display: none; /* skjul menuen som udgangspunkt */
+  }
+  .nav.open {
+    display: block; /* vis menuen, når burgeren trykkes */
+  }
+}
+/* Burgermenu slutter her */ 
+
 .nav a{color:var(--muted); text-decoration:none; margin-left:1rem}
 .nav a:hover{color:var(--text)}
+
 
 .menu-icon {
   display: flex;
