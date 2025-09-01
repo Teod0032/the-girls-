@@ -37,8 +37,8 @@ body{
 }
 
 .shopping-bag-icon img {
-  width: 24px;  /* Justér størrelsen efter behov */
-  height: 24px; /* Justér størrelsen efter behov */
+  width: 48px;  /* Justér størrelsen efter behov */
+  height: 48px; /* Justér størrelsen efter behov */
   display: block; /* Fjerner et lille mellemrum under billedet */
 }
 /* --- NY KODE SLUTTER HER --- */
