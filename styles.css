@@ -214,8 +214,15 @@ body{
   max-width:42ch;
   line-height:1.6;
 }
+
+.payment-text{
+  padding-left: 180px;
+
+}
+
 .payment-icon {
   height: 55px;
+  padding-left: 175px;
 
 }
 .footer-col h4{
