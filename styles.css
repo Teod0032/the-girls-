@@ -324,3 +324,11 @@ body{
 } 
 }
 
+@media (max-width:900px){
+  .product{
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .gallery{}
+}
