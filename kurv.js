@@ -1,101 +1,131 @@
-// Vent på at hele HTML-siden er indlæst
+// kurv.js
 document.addEventListener('DOMContentLoaded', () => {
-
-    // --- 1. Vælg de HTML-elementer, vi skal bruge ---
-    const tilføjKnap = document.getElementById('add-to-cart-btn'); // Din "Tilføj til kurv" knap
-    const kurvIkon = document.getElementById('cart-icon');         // Ikonet for kurven
-    const kurvUI = document.getElementById('cart-ui');             // Selve kurv-containeren
-    const lukKurvKnap = document.getElementById('close-cart-btn'); // Luk-knappen i kurven
-    const kurvIndhold = document.querySelector('.cart-content');   // Området hvor produktet vises i kurven
-    const kurvAntalIkon = document.getElementById('cart-counter');   // Tælleren på kurv-ikonet
-
-    // --- 2. Variabel til at holde styr på, om produktet er i kurven ---
-    let produktErIKurven = false;
-
-    // --- 3. Funktioner ---
-
-    // Funktion til at åbne kurven
-    function åbenKurv() {
-        kurvUI.classList.add('active');
+    // Elements
+    const addBtn      = document.getElementById('add-to-cart');
+    const cartIcon    = document.getElementById('cart-icon');
+    const cartCounter = document.getElementById('cart-counter');
+  
+    const drawer     = document.getElementById('cart-drawer');
+    const itemsEl    = document.getElementById('cart-items');
+    const emptyEl    = document.getElementById('cart-empty');
+    const subtotalEl = document.getElementById('cart-subtotal');
+  
+    // State (no persistence)
+    let cart = []; // [{id,name,price,image,size,color,qty}]
+  
+    // Helpers
+    const money   = new Intl.NumberFormat('da-DK', { style: 'currency', currency: 'DKK' });
+    const parseDKK = (str) => Number((str || '0').replace(/[^\d,.-]/g,'').replace(/\./g,'').replace(',', '.')) || 0;
+  
+    const qtyTotal = () => cart.reduce((n,i)=>n+i.qty,0);
+    const sumTotal = () => cart.reduce((s,i)=>s+i.price*i.qty,0);
+    const setCounter = () => {
+      const q = qtyTotal();
+      cartCounter.textContent = String(q);
+      cartCounter.style.display = q > 0 ? 'block' : 'none';
+    };
+  
+    function getSelectedColorName() {
+      const btn = document.querySelector('.color-option.is-active');
+      return btn?.querySelector('span')?.textContent?.trim() || '';
     }
-
-    // Funktion til at lukke kurven
-    function lukKurv() {
-        kurvUI.classList.remove('active');
+  
+    function getSelectedSize() {
+      // from str.js, a global var called valgtStr is maintained
+      return typeof valgtStr !== 'undefined' ? valgtStr : null;
     }
-    
-    // Funktion der tilføjer produktet til kurven
-    function tilføjProduktTilKurv() {
-        // Tjek først om produktet allerede ER tilføjet
-        if (produktErIKurven) {
-            alert("Produktet er allerede i kurven!");
-            åbenKurv(); // Åben kurven for at vise dem det
-            return; // Stop funktionen her
-        }
-
-        // Definer produktets information her
-        const produkt = {
-            titel: "Limona Top • sort str M",
-            pris: "449,00 kr.", // Husk at skrive den korrekte pris
-            billedeSrc: "img/limona-top.jpg" // VIGTIGT: Ret stien til dit produktbillede!
-        };
-
-        // Byg HTML-koden for produktet i kurven
-        const vareHTML = `
-            <div class="cart-box">
-                <img src="${produkt.billedeSrc}" alt="" class="cart-img">
-                <div class="detail-box">
-                    <div class="cart-product-title">${produkt.titel}</div>
-                    <div class="cart-price">${produkt.pris}</div>
-                    <input type="number" value="1" class="cart-quantity">
-                </div>
-                <i class='bx bxs-trash-alt cart-remove'></i>
-            </div>`;
-
-        // Indsæt HTML'en i kurven
-        kurvIndhold.innerHTML = vareHTML;
-        produktErIKurven = true; // Marker at produktet nu er i kurven
-
-        // Opdater tæller og totalpris
-        opdaterTotal();
-        åbenKurv(); // Vis kurven
+  
+    function getProductFromPage() {
+      const title    = (document.querySelector('.title')?.textContent || '').trim();
+      const subtitle = (document.querySelector('.subtitle')?.textContent || '').trim(); // skift.js updates this
+      const price    = parseDKK(document.querySelector('.price__now')?.textContent || '');
+      const image    = document.getElementById('mainImage')?.getAttribute('src') || '';
+      const size     = getSelectedSize();
+      const color    = getSelectedColorName();
+      const name     = subtitle ? `${title} – ${subtitle}` : title;
+      const id       = [name, color, size].filter(Boolean).join('|');
+      return { id, name, price, image, size, color };
     }
-
-    // Funktion der fjerner produktet (hvis man klikker på skraldespanden)
-    function fjernProduktFraKurv() {
-        kurvIndhold.innerHTML = '<p class="empty-cart-message">Kurven er tom.</p>'; // Vis "tom kurv" besked
-        produktErIKurven = false; // Marker at produktet er fjernet
-        opdaterTotal(); // Opdater tæller og totalpris
+  
+    function renderCart() {
+      setCounter();
+      itemsEl.innerHTML = '';
+  
+      const has = cart.length > 0;
+      emptyEl.style.display = has ? 'none' : 'block';
+      subtotalEl.textContent = money.format(has ? sumTotal() : 0);
+      if (!has) return;
+  
+      const frag = document.createDocumentFragment();
+      cart.forEach(item => {
+        const row = document.createElement('div');
+        row.className = 'cart-item';
+        row.dataset.id = item.id;
+        row.innerHTML = `
+          <img class="cart-item__img" src="${item.image}" alt="">
+          <div>
+            <div class="cart-item__title">${item.name}</div>
+            <div class="cart-item__meta">
+              ${item.color ? `Farve: ${item.color}` : ''} ${item.size ? `· Str.: ${item.size}` : ''} · Antal: ${item.qty}
+            </div>
+          </div>
+          <div class="cart-item__right">
+            <button class="cart-remove" aria-label="Fjern vare">Fjern</button>
+            <div class="cart-item__line">${money.format(item.price * item.qty)}</div>
+          </div>
+        `;
+        frag.appendChild(row);
+      });
+      itemsEl.appendChild(frag);
     }
-
-    // Funktion til at opdatere totalpris og tæller
-    function opdaterTotal() {
-        if (produktErIKurven) {
-            const prisTekst = kurvIndhold.querySelector('.cart-price').innerText;
-            document.querySelector('.total-price').innerText = prisTekst;
-            kurvAntalIkon.textContent = '1';
-            kurvAntalIkon.style.display = 'block';
-        } else {
-            document.querySelector('.total-price').innerText = '0,00 kr.';
-            kurvAntalIkon.style.display = 'none';
-        }
+  
+    function openDrawer() {
+      drawer?.classList.add('is-open');
+      drawer?.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
     }
-
-    // --- 4. Event Listeners (lytter efter klik) ---
-
-    // Klik på "Tilføj til kurv" knappen
-    tilføjKnap.addEventListener('click', tilføjProduktTilKurv);
-
-    // Klik på kurv-ikonet åbner kurven
-    kurvIkon.addEventListener('click', åbenKurv);
-
-    // Klik på luk-knappen lukker kurven
-    lukKurvKnap.addEventListener('click', lukKurv);
-
-    // Klik på skraldespanden i kurven fjerner produktet
-    kurvIndhold.addEventListener('click', (event) => {
-        if (event.target.classList.contains('cart-remove')) {
-            fjernProduktFraKurv();
-        }
+    function closeDrawer() {
+      drawer?.classList.remove('is-open');
+      drawer?.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+  
+    // Wire up
+    setCounter();
+    renderCart();
+  
+    // Add-to-cart: rely on str.js to show feedback/validation; we only add if size is chosen
+    addBtn?.addEventListener('click', () => {
+      const p = getProductFromPage();
+  
+      // if no size selected, do nothing (str.js already shows the error message)
+      if (!p.size) return;
+  
+      if (!p.name || !p.price) return;
+  
+      const existing = cart.find(i => i.id === p.id);
+      if (existing) existing.qty += 1;
+      else cart.push({ ...p, qty: 1 });
+  
+      renderCart();
+      openDrawer();
     });
-});
+  
+    // Open/close drawer
+    cartIcon?.addEventListener('click', (e) => { e.preventDefault(); openDrawer(); });
+    drawer?.addEventListener('click', (e) => {
+      if (e.target.matches('.cart-backdrop, .cart-close, [data-dismiss]')) closeDrawer();
+    });
+  
+    // Remove item (delegation)
+    itemsEl?.addEventListener('click', (e) => {
+      const btn = e.target.closest('.cart-remove');
+      if (!btn) return;
+      const row = btn.closest('.cart-item');
+      const id  = row?.dataset.id;
+      cart = cart.filter(i => i.id !== id);
+      renderCart();
+      if (cart.length === 0) closeDrawer();
+    });
+  });
+  

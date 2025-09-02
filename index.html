@@ -40,73 +40,64 @@
   </div>
 
   <header class="topbar">
-  <a href="index.html" class="brand">
-    <img src="img/logo.jpg" alt="Bahne logo" />
-  </a>
+    <a href="index.html" class="brand">
+      <img src="img/logo.jpg" alt="Bahne logo" />
+    </a>
 
-  <!-- NAV: samme id som aria-controls -->
-  <nav id="mobile-nav" class="nav" aria-hidden="true">
-    <!-- Kun vist på mobil -->
-    <div class="nav-mobile-only nav-top">
-      <strong>Menu</strong>
-      <button class="nav-close" aria-label="Luk menu">×</button>
+    <!-- NAV -->
+    <nav id="mobile-nav" class="nav" aria-hidden="true">
+      <div class="nav-mobile-only nav-top">
+        <strong>Menu</strong>
+        <button class="nav-close" aria-label="Luk menu">×</button>
+      </div>
+      <form class="nav-mobile-only nav-search" role="search">
+        <input type="search" placeholder="Søg produkter…" aria-label="Søg" />
+      </form>
+      <a href="#">Mode</a>
+      <a href="#">Bolig</a>
+      <a href="#">Tilbud</a>
+      <a href="#">Nyheder</a>
+      <div class="nav-mobile-only nav-utility">
+        <a href="#">Log ind</a>
+        <a href="#">Kundeservice</a>
+        <a href="#">Find butik</a>
+      </div>
+    </nav>
+
+    <div class="menu-icon">
+      <img src="img/shoppingbag.svg" alt="Indkøbskurv" id="cart-icon" />
+      <span id="cart-counter" class="cart-counter">0</span>
+      <img src="img/search.svg" alt="Søgefelt" />
+      <button class="burger"
+              aria-label="Åbn menu"
+              aria-controls="mobile-nav"
+              aria-expanded="false">
+        <span class="bar" aria-hidden="true"></span>
+      </button>
     </div>
+  </header>
 
-    <!-- Søg (mobil) -->
-    <form class="nav-mobile-only nav-search" role="search">
-      <input type="search" placeholder="Søg produkter…" aria-label="Søg" />
-    </form>
-
-    <!-- Dine eksisterende links (bruges både desktop + mobil) -->
-    <a href="#">Mode</a>
-    <a href="#">Bolig</a>
-    <a href="#">Tilbud</a>
-    <a href="#">Nyheder</a>
-
-    <!-- Utility (mobil) -->
-    <div class="nav-mobile-only nav-utility">
-      <a href="#">Log ind</a>
-      <a href="#">Kundeservice</a>
-      <a href="#">Find butik</a>
-    </div>
-  </nav>
-
-  <div class="menu-icon">
-    <img src="img/shoppingbag.svg" alt="Indkøbskurv" id="cart-icon" />
-    <span id="cart-counter" class="cart-counter">0</span>
-    <img src="img/search.svg" alt="Søgefelt" />
-    <button class="burger"
-            aria-label="Åbn menu"
-            aria-controls="mobile-nav"
-            aria-expanded="false">
-      <span class="bar" aria-hidden="true"></span>
-    </button>
-  </div>
-</header>
-
-<!-- Overlay klik-udenfor-luk -->
-<div class="overlay" hidden></div>
-
-
+  <!-- Overlay (burger menu) -->
+  <div class="overlay" hidden></div>
 
   <main class="product">
-  <section class="gallery">
-    <img id="mainImage" class="gallery__main" src="img/top-black-1.jpg" alt="Limona Top i sort" />
-    <div class="thumbs">
-      <button class="thumb is-active" data-img="img/top-black-1.jpg">
-        <img src="img/top-black-1.jpg" alt="Front" />
-      </button>
-      <button class="thumb" data-img="img/top-black-2.jpg">
-        <img src="img/top-black-2.jpg" alt="Detalje" />
-      </button>
-      <button class="thumb" data-img="img/top-black-3.jpg">
-        <img src="img/top-black-3.jpg" alt="Side" />
-      </button>
-      <button class="thumb" data-img="img/top-black-4.jpg">
-        <img src="img/top-black-4.jpg" alt="Model" />
-      </button>
-    </div>
-  </section>
+    <section class="gallery">
+      <img id="mainImage" class="gallery__main" src="img/top-black-1.jpg" alt="Limona Top i sort" />
+      <div class="thumbs">
+        <button class="thumb is-active" data-img="img/top-black-1.jpg">
+          <img src="img/top-black-1.jpg" alt="Front" />
+        </button>
+        <button class="thumb" data-img="img/top-black-2.jpg">
+          <img src="img/top-black-2.jpg" alt="Detalje" />
+        </button>
+        <button class="thumb" data-img="img/top-black-3.jpg">
+          <img src="img/top-black-3.jpg" alt="Side" />
+        </button>
+        <button class="thumb" data-img="img/top-black-4.jpg">
+          <img src="img/top-black-4.jpg" alt="Model" />
+        </button>
+      </div>
+    </section>
 
     <section class="details">
       <div class="badges">
@@ -164,58 +155,75 @@
 
   <footer class="site-footer">
     <div class="footer-grid">
-      <!--venstre: logo + tekst-->
-     <div class="footer-brand">
-      <img src="img/bottomlogo.png" alt="Bahne" class="footer-logo" />
-      <br>
-      <p class="footer-story">
-        Gå på opdagelse i vores store livsstilsunivers indenfor mode, bolig, børn og
-        wellness. Følg os på sociale medier for inspiration, nyheder og meget mere.
-      </p>
+      <div class="footer-brand">
+        <img src="img/bottomlogo.png" alt="Bahne" class="footer-logo" />
+        <br>
+        <p class="footer-story">
+          Gå på opdagelse i vores store livsstilsunivers indenfor mode, bolig, børn og
+          wellness. Følg os på sociale medier for inspiration, nyheder og meget mere.
+        </p>
+      </div>
+
+      <nav class="footer-col">
+        <h4>Kundeservice</h4>
+        <a href="#">FAQ</a>
+        <a href="#">Retur- & bytteservice</a>
+        <a href="#">Returformular</a>
+        <a href="#">Handelsbetingelser</a>
+      </nav>
+
+      <nav class="footer-col">
+        <h4>Om Bahne</h4>
+        <a href="#">Om Bahne</a>
+        <a href="#">Job & Karriére</a>
+        <a href="#">Vareinformation</a>
+      </nav>
+
+      <nav class="footer-col">
+        <h4>Butikker</h4>
+        <a href="#">Find din Bahne butik</a>
+        <a href="#">Tilmeld dig nyhedsbrev</a>
+        <a href="#">Events</a>
+      </nav>
     </div>
 
-    <!-- Kolonne 1 -->
-    <nav class="footer-col">
-      <h4>Kundeservice</h4>
-      <a href="#">FAQ</a>
-      <a href="#">Retur- & bytteservice</a>
-      <a href="#">Returformular</a>
-      <a href="#">Handelsbetingelser</a>
-    </nav>
+    <div class="payments">
+      <p class="payment-text">Betal ligesom det passer dig:</p>
+      <img src="img/applepay.svg" alt="" class="first-payment-icon">
+      <img src="img/mastercard.svg" alt="" class="payment-icon">
+      <img src="img/visa.svg" alt="" class="payment-icon">
+      <img src="img/dankort.svg" alt="" class="payment-icon">
+      <img src="img/klarna.svg" alt="" class="payment-icon">
+      <img src="img/paypal.svg" alt="" class="payment-icon">
+    </div>
 
-     <!-- Kolonne 2 -->
-    <nav class="footer-col">
-      <h4>Om Bahne</h4>
-      <a href="#">Om Bahne</a>
-      <a href="#">Job & Karriére</a>
-      <a href="#">Vareinformation</a>
-    </nav>
+    <div class="footer-bottom">
+      <small>© 2025 Bahne (demo)</small>
+    </div>
+  </footer>
 
-    <!-- Kolonne 3 -->
-    <nav class="footer-col">
-      <h4>Butikker</h4>
-      <a href="#">Find din Bahne butik</a>
-      <a href="#">Tilmeld dig nyhedsbrev</a>
-      <a href="#">Events</a>
-    </nav>
+  <!-- CART DRAWER -->
+  <div id="cart-drawer" class="cart-drawer" aria-hidden="true" role="dialog" aria-labelledby="cart-title">
+    <div class="cart-backdrop" data-dismiss></div>
+    <aside class="cart-panel" role="document">
+      <header class="cart-header">
+        <h3 id="cart-title">Din kurv</h3>
+        <button class="cart-close" aria-label="Luk kurv">×</button>
+      </header>
+
+      <div id="cart-empty" class="cart-empty">Din kurv er tom.</div>
+      <div id="cart-items" class="cart-items" aria-live="polite"></div>
+
+      <footer class="cart-footer">
+        <div class="cart-total">
+          <span>Subtotal</span>
+          <strong id="cart-subtotal">0,00 kr.</strong>
+        </div>
+      </footer>
+    </aside>
   </div>
 
-  <div class="payments">
-    <p class="payment-text">Betal ligesom det passer dig:</p>
-    <img src="img/applepay.svg" alt="" srcset="" class="first-payment-icon">
-    <img src="img/mastercard.svg" alt="" srcset="" class="payment-icon">
-    <img src="img/visa.svg" alt="" srcset="" class="payment-icon">
-    <img src="img/dankort.svg" alt="" srcset="" class="payment-icon">
-    <img src="img/klarna.svg" alt="" srcset="" class="payment-icon">
-    <img src="img/paypal.svg" alt="" srcset="" class="payment-icon">
-
-  </div>
-
-  <div class="footer-bottom">
-    <small>© 2025 Bahne (demo)</small>
-  </div>
-</footer>
-<script src="kurv.js"></script>
+  <!-- cart script -->
+  <script src="kurv.js"></script>
 </body>
 </html>
-
