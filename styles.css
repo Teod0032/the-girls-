@@ -207,7 +207,10 @@ body{
   border:1px solid var(--line); background:#fff; border-radius:8px;
   padding:.5rem .75rem; cursor:pointer;
 }
-.size.is-active, .size:focus{outline:2px solid #000}
+.size.is-active {
+  border: 2px solid black;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
 
 .cta{
   width:100%; padding:0.9rem; margin:.5rem 0 0;

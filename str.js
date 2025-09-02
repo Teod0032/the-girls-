@@ -25,13 +25,12 @@ function vælgStr (size){
 
 for (let i = 0; i < str.length; i++) {
     let knap = document.querySelector('[data-size="' + str[i] + '"]')
-    knap.classList.remove("is-active");
+    if (knap) knap.classList.remove("is-active");
 }
 
 let aktivKnap = document.querySelector('[data-size="' + valgtStr + '"]')
-if (aktivKnap) {
-    aktivKnap.classList.add("is-active");
-}
+if (aktivKnap) aktivKnap.classList.add("is-active");
+
 
 let feedback = document.getElementById("feedback");
 feedback.textContent = "Du har valgt størrelse:" + valgtStr;
@@ -52,3 +51,5 @@ document.querySelectorAll(".size").forEach(knap => {
         vælgStr(knap.getAttribute("data-size"));
     });
 });
+
+document.getElementById("add-to-cart").addEventListener("click", tilføjTilKurv);
