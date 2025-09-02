@@ -1,30 +1,34 @@
 // Variabler i globalt scope
 const burger = document.querySelector('.burger');
-const nav = document.querySelector('.nav');
+const nav = document.getElementById('mobile-nav');
 
-// Funktion der åbner menuen
+// Åbn menu
 function openMenu() {
-  burger.setAttribute('aria-expanded', true);
+  burger.setAttribute('aria-expanded', 'true');
   nav.classList.add('open');
 }
 
-// Funktion der lukker menuen
+// Luk menu
 function closeMenu() {
-  burger.setAttribute('aria-expanded', false);
+  burger.setAttribute('aria-expanded', 'false');
   nav.classList.remove('open');
 }
 
-// Funktion der toggler mellem open/close
+// Toggle
 function toggleMenu() {
-  // 'let' viser block scope (kun gyldig inden for denne funktion)
-  let expanded = burger.getAttribute('aria-expanded') === 'true';
-  
-  if (expanded) {
-    closeMenu();
-  } else {
-    openMenu();
-  }
+  const isOpen = burger.getAttribute('aria-expanded') === 'true';
+  isOpen ? closeMenu() : openMenu();
 }
 
-// Event listener → kalder en funktion (ikke bare anonym arrow)
+// Klik på burger
 burger.addEventListener('click', toggleMenu);
+
+// Luk når der klikkes på et link i menuen (mobil-venligt)
+nav.addEventListener('click', (e) => {
+  if (e.target.matches('a')) closeMenu();
+});
+
+// Luk automatisk hvis man går over mobil-breakpoint (så den ikke “hænger” åben)
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) closeMenu();
+});
