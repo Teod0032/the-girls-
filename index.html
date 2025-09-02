@@ -37,30 +37,52 @@
   </div>
 
   <header class="topbar">
-    <a href="index.html" class="brand">
-      <img src="img/logo.jpg" alt="Bahne logo" />
-    </a>
+  <a href="index.html" class="brand">
+    <img src="img/logo.jpg" alt="Bahne logo" />
+  </a>
 
-  
-   <nav id="mobile-nav" class="nav">
-      <a href="#">Mode</a>
-      <a href="#">Bolig</a>
-      <a href="#">Tilbud</a>
-      <a href="#">Nyheder</a>
-    </nav>
-    
-   <div class="menu-icon">
+  <!-- NAV: samme id som aria-controls -->
+  <nav id="mobile-nav" class="nav" aria-hidden="true">
+    <!-- Kun vist på mobil -->
+    <div class="nav-mobile-only nav-top">
+      <strong>Menu</strong>
+      <button class="nav-close" aria-label="Luk menu">×</button>
+    </div>
+
+    <!-- Søg (mobil) -->
+    <form class="nav-mobile-only nav-search" role="search">
+      <input type="search" placeholder="Søg produkter…" aria-label="Søg" />
+    </form>
+
+    <!-- Dine eksisterende links (bruges både desktop + mobil) -->
+    <a href="#">Mode</a>
+    <a href="#">Bolig</a>
+    <a href="#">Tilbud</a>
+    <a href="#">Nyheder</a>
+
+    <!-- Utility (mobil) -->
+    <div class="nav-mobile-only nav-utility">
+      <a href="#">Log ind</a>
+      <a href="#">Kundeservice</a>
+      <a href="#">Find butik</a>
+    </div>
+  </nav>
+
+  <div class="menu-icon">
     <img src="img/shoppingbag.svg" alt="Indkøbskurv" id="cart-icon" />
     <span id="cart-counter" class="cart-counter">0</span>
     <img src="img/search.svg" alt="Søgefelt" />
-
-    <!-- Korrekt lukket burger -->
     <button class="burger"
             aria-label="Åbn menu"
             aria-controls="mobile-nav"
             aria-expanded="false">
       <span class="bar" aria-hidden="true"></span>
-  </button>
+    </button>
+  </div>
+</header>
+
+<!-- Overlay klik-udenfor-luk -->
+<div class="overlay" hidden></div>
 
   </header>
 
