@@ -41,6 +41,7 @@ function tilføjTilKurv() {
 
     if(valgtStr === null){
         feedback.textContent = "Vælg venligst en størrelse!"
+        feedback.color = "red";
     } else {
         feedback.textContent = "Lagt i kurv: Str. " + valgtStr;
     }
