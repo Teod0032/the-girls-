@@ -21,11 +21,13 @@ function showVariant(color){
         console.log("Ukendt variant:" + color);
         return;
     }
-    // DOM Opdater teskt og priser
+    // DOM Opdater navn 
   document.querySelector(".subtitle").textContent = variant.name;
-  document.querySelector(".price__now").textContent = variant.priceNow + " kr.";
-  document.querySelector(".price__before").textContent = variant.priceBefore + " kr.";
 
+  // DOM Opdater prisen
+  document.querySelector(".price__now").textContent = variant.priceNow.toFixed(2).replace(".", ",") + " kr.";
+  document.querySelector(".price__before").textContent = variant.priceBefore.toFixed(2).replace(".", ",") + " kr.";
+  
   // DOM opdater hovedbillede //
   document.getElementById("mainImage").src = variant.images[0];
 
