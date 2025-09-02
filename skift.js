@@ -21,31 +21,32 @@ function showVariant(color){
         console.log("Ukendt variant:" + color);
         return;
     }
+    // DOM Opdater teskt og priser
+  document.querySelector(".subtitle").textContent = variant.name;
+  document.querySelector(".price__now").textContent = variant.priceNow + " kr.";
+  document.querySelector(".price__before").textContent = variant.priceBefore + " kr.";
+
+  // DOM opdater hovedbillede //
+  document.getElementById("mainImage").src = variant.images[0];
+
+  // DOM: Opdater thumbnails //
+  const thumbs = document.querySelector(".thumbs");
+  thumbs.innerHTML = ""; 
+
+  // Loop over billeder
+  for (let i = 0; i < variant.images.length; i++){
+      let imgSrc = variant.images[i];
+      let thumbBtn = createThumb (imgSrc, i === 0);
+      thumbs.appendChild(thumbBtn);
+  }
+
+  // Opdater farveknapper //
+  document.querySelectorAll(".color-option").forEach (opt => {
+    opt.classList.toggle("is-active", opt.dataset.color === color);
+  });
 }
 
-// DOM Opdater teskt og priser
-document.querySelector(".subtite").textContent = variant.name;
-document.querySelector(".price__now").textContent = variant.priceNow + "kr.";
-document.querySelector(".price__before").textContent = variant.priceBefore + "kr.";
 
-// DOM opdater hovedbillede //
-document.getElementById("mainImage").src = variant.images[0];
-
-// DOM: Opdater thumbnails //
-const tumbs = document.querySelector(".thumbs");
-thumbs.innerHTML = ""; 
-
-// Loop over billeder
-for (let i = 0; i < variant.imges.lenght; i++){
-    let imgSrc = variant.images[i];
-    let thumbBtn = createThumb (imgSrc, i === 0);
-    thumbBtn.appendChild(thumbBtn);
-}
-
-// Opdater farveknapper //
-document.querySelectorAll(".color-option").forEach (opt => {
-    opt.classList.toggle("is-active", opt.CDATA_SECTION_NODE.color === color);
-});
 
 // Funktion til at lave en thumbnail-knap //
 function createThumb(src, isActive) {
