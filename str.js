@@ -34,6 +34,7 @@ if (aktivKnap) aktivKnap.classList.add("is-active");
 
 let feedback = document.getElementById("feedback");
 feedback.textContent = "Du har valgt størrelse:" + valgtStr;
+feedback.style.color = "green";
 }
 
 function tilføjTilKurv() {
@@ -41,6 +42,7 @@ function tilføjTilKurv() {
 
     if(valgtStr === null){
         feedback.textContent = "Vælg venligst en størrelse!"
+        feedback.style.color = "red";
     } else {
         feedback.textContent = "Lagt i kurv: Str. " + valgtStr;
     }

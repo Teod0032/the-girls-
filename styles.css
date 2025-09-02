@@ -468,7 +468,7 @@ body{
   display: block;
 }
 .thumbs .thumb.is-active img {
-  outline: 2px solid #333;
-  outline-offset: 2px;
+  outline: 1.5px solid #333;
+  outline-offset: 1.5px;
 }
 
