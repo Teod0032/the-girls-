@@ -1,3 +1,8 @@
+
+// Insiration hentet fra
+// https://www.w3schools.com/js/tryit.asp?filename=tryjs_const_object
+// Oprettelse af hvid og sort trøje, der gennemer informationer om navn, pris og billeder.
+
 const variantData = {
     sort: {
       name: "Limona Top • sort",
@@ -13,36 +18,34 @@ const variantData = {
     }
   };
 
-// Funktion til at skifte variant //
+// Funktion til at skifte variant 
 function showVariant(color){
     const variant = variantData[color]
+    
+    // Søger for, at der vises det rigtige produktnavn, når en variant vælges.
+    document.querySelector(".subtitle").textContent = variant.name;
 
-    if(!variant){
-        console.log("Ukendt variant:" + color);
-        return;
-    }
-    // DOM Opdater navn 
-  document.querySelector(".subtitle").textContent = variant.name;
-
-  // DOM Opdater prisen
-  document.querySelector(".price__now").textContent = variant.priceNow.toFixed(2).replace(".", ",") + " kr.";
-  document.querySelector(".price__before").textContent = variant.priceBefore.toFixed(2).replace(".", ",") + " kr.";
+   // Opdater prisen når det der er valgt det rigtigt produkt
+    document.querySelector(".price__now").textContent = variant.priceNow.toFixed(2).replace(".", ",") + " kr.";
+    document.querySelector(".price__before").textContent = variant.priceBefore.toFixed(2).replace(".", ",") + " kr.";
   
-  // DOM opdater hovedbillede //
-  document.getElementById("mainImage").src = variant.images[0];
+    // Skifter hovedbillede om til det valgte produkt 
+    document.getElementById("mainImage").src = variant.images[0];
 
-  // DOM: Opdater thumbnails //
-  const thumbs = document.querySelector(".thumbs");
-  thumbs.innerHTML = ""; 
+    // Rydder thumbnail-området, og bliver genopfyldt med de rigtige billeder til produktet.
+    const thumbs = document.querySelector(".thumbs");
+    thumbs.innerHTML = ""; 
 
-  // Loop over billeder
+  // Inspiration henten fra W3
+  // https://www.w3schools.com/js/tryit.asp?filename=tryjs_dom_form_elements
+  // Loop over billeder 
   for (let i = 0; i < variant.images.length; i++){
       let imgSrc = variant.images[i];
       let thumbBtn = createThumb (imgSrc, i === 0);
       thumbs.appendChild(thumbBtn);
   }
 
-  // Opdater farveknapper //
+  // Den markere visuelt den knap, der er valgt, og fjerner markeringen fra de andre. 
   document.querySelectorAll(".color-option").forEach (opt => {
     opt.classList.toggle("is-active", opt.dataset.color === color);
   });
@@ -72,12 +75,14 @@ function createThumb(src, isActive) {
 }
 
 // Klik på farveknapper
+// Finder alle elementer på siden, som repræsentere farvevalg. Når man klikker på en af dem, aflæser den hvilken 
+// farve der er knyttet til elementet og sender information videre, som så viser den valgte variant.
 document.querySelectorAll(".color-option").forEach(btn => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", () => {  // Tilføjer en klik-hændelse til knappen
       const color = btn.dataset.color; 
-      showVariant(color);
+      showVariant(color); // Kalder en funktion, der viser en bestemt "variant" baseret på farven.
     });
   });
 
-// Startvisning af sort
+// Når siden starter, kaldes funktionen direkte med "sort", så standardvisningen altid er den sorte trøje.
 showVariant("sort");
