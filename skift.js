@@ -1,8 +1,8 @@
+// Freja 
 
 // Insiration hentet fra
 // https://www.w3schools.com/js/tryit.asp?filename=tryjs_const_object
 // Oprettelse af hvid og sort trøje, der gennemer informationer om navn, pris og billeder.
-
 const variantData = {
     sort: {
       name: "Limona Top • sort",
