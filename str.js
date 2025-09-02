@@ -25,7 +25,7 @@ function vælgStr (size){
 
 for (let i = 0; i < str.length; i++) {
     let knap = document.querySelector('[data-size="' + str[i] + '"]')
-    aktivKnap.classList.remove("is-active");
+    knap.classList.remove("is-active");
 }
 
 let aktivKnap = document.querySelector('[data-size="' + valgtStr + '"]')
@@ -46,3 +46,9 @@ function tilføjTilKurv() {
         feedback.textContent = "Lagt i kurv: Str. " + valgtStr;
     }
 }
+
+document.querySelectorAll(".size").forEach(knap => {
+    knap.addEventListener("click", () => {
+        vælgStr(knap.getAttribute("data-size"));
+    });
+});
