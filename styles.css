@@ -84,6 +84,7 @@ body{
 }
 
 /* Burgermenu starterher */ 
+
 .burger {
   display: none;
   background: none;
@@ -112,7 +113,6 @@ body{
   z-index: 40;
 }
 .overlay.is-visible{ opacity: 1; visibility: visible; }
-
 @media (max-width: 768px) {
   .burger { display: block; }
 
