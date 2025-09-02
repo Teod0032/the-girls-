@@ -6,3 +6,5 @@ burger.addEventListener('click', () => {
   burger.setAttribute('aria-expanded', !expanded);
   nav.classList.toggle('open');
 });
+
+hej 
