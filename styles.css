@@ -432,45 +432,61 @@ body{
   .cta{ width: 100%; }
 }
 
-/* Gør galleriet klar til pile ovenpå billedet */
+/* Sørg for at pilene kan ligge oven på billedet */
 .gallery { position: relative; }
 
-/* Hovedbilledet fylder containerens bredde */
-.gallery__main { width: 100%; display: block; }
-
-/* Pile-knapper (indsættes af JS) */
-.gallery__arrow {
+/* Pil-knapper – lys, rundet, let skygge */
+.gallery__arrow{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(0,0,0,.55);
-  color: #fff;
-  font-size: 22px;
+  z-index: 2;
+
+  width: 44px;                 /* god touch-størrelse */
+  height: 44px;
+  border-radius: 12px;         /* runde hjørner som i eksemplet */
+  border: 1px solid rgba(0,0,0,.08);
+  background: #ffffff;         /* lys knap */
+  color: #111;                 /* mørk pil */
   display: grid;
   place-items: center;
   cursor: pointer;
+  font-size: 18px;             /* størrelse på »❮« / »❯« */
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 6px 20px rgba(0,0,0,.06);
+  transition: background .2s ease, color .2s ease, box-shadow .2s ease, transform .05s ease;
 }
-.gallery__arrow--prev { left: 8px; }
-.gallery__arrow--next { right: 8px; }
 
-/* Thumbs som knapper */
-.thumbs .thumb {
-  background: none;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
+.gallery__arrow--prev{ left: 10px; }
+.gallery__arrow--next{ right: 10px; }
+
+/* Hover/focus: mørk knap med lys pil */
+.gallery__arrow:hover,
+.gallery__arrow:focus-visible{
+  background: #111;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.12), 0 10px 24px rgba(0,0,0,.18);
+  outline: none;
 }
-.thumbs .thumb img {
+
+/* Klik-feedback (lille “tryk”-fornemmelse) */
+.gallery__arrow:active{
+  transform: translateY(-50%) scale(0.98);
+}
+
+/* (Valgfrit) gør tastaturfokus ekstra tydeligt på lys baggrund */
+.gallery__arrow:focus-visible{
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+/* Hovedbilledet fylder kolonnen pænt */
+.gallery__main{
+  width: 100%;
   display: block;
+  border-radius: 12px; /* hvis du vil matche knappens blødhed */
 }
-.thumbs .thumb.is-active img {
-  outline: 1.5px solid #333;
-  outline-offset: 1.5px;
-}
+
 
 
 
