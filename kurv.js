@@ -1,4 +1,4 @@
-// Elementer
+// Elementer (DOM)
 var addBtn      = document.getElementById('add-to-cart');
 var cartIcon    = document.getElementById('cart-icon');
 var cartCounter = document.getElementById('cart-counter');
@@ -9,55 +9,71 @@ var subtotalEl  = document.getElementById('cart-subtotal');
 var emptyEl     = document.getElementById('cart-empty');
 var itemsEl     = document.getElementById('cart-items');
 
-// Tilstand: enkel ordbog fra id -> { navn, pris, antal }
-var cart = {};
+// STATE: Array (Arrays) af varelinjer
+var cart = []; // [{ id, name, price, qty }]
 
-// Hjælpere
-function money(n){ return 'kr ' + (+n).toFixed(2); }
+// Funktion + LET (variable scope)
+function money(n){
+  let amount = (+n).toFixed(2);   // 'let' er blok-scope
+  return 'kr ' + amount;
+}
+
+// Funktioner til at åbne/lukke (Functions)
 function openDrawer(){ drawer.classList.add('is-open'); }
 function closeDrawer(){ drawer.classList.remove('is-open'); }
 
-// Vis liste: kun navn, pris og antal
+// Render (Loops, if-else, operatorer, DOM)
 function render(){
-  var qty = 0;
-  var subtotal = 0;
-  var html = '';
-
-  for (var id in cart) {
-    var it = cart[id];
-    qty += it.qty;
+  var qty = 0, subtotal = 0, html = '';
+  for (var i = 0; i < cart.length; i++) {      // klassisk for-løkke (Loops)
+    var it = cart[i];
+    qty += it.qty;                              // operatorer: +, +=, *
     subtotal += it.price * it.qty;
-    html += ''
-      + '<div class="cart-item">'
-      +   '<div class="cart-item__title">' + it.name + '</div>'
-      +   '<div class="cart-item__meta">Pris: ' + money(it.price) + ' · Antal: ' + it.qty + '</div>'
-      + '</div>';
+    html += '<div class="cart-item">'
+          +   '<div class="cart-item__title">'+ it.name +'</div>'
+          +   '<div class="cart-item__meta">Pris: '+ money(it.price) +' · Antal: '+ it.qty +'</div>'
+          + '</div>';
   }
 
   cartCounter.textContent = qty;
-  cartCounter.style.display = qty ? 'inline-block' : 'none';
+  cartCounter.style.display = qty ? 'inline-block' : 'none';  // if-else (ternary)
   subtotalEl.textContent = money(subtotal);
   itemsEl.innerHTML = html;
   emptyEl.style.display = qty ? 'none' : 'block';
+
+  // Debugging (fejlfinding)
+  console.log('render()', { qty: qty, subtotal: subtotal, cart: cart });
 }
 
-// Læg i kurv (læser fra data-* på knappen)
+// Event: “læg i kurv”
 if (addBtn) addBtn.onclick = function(){
   var id    = addBtn.dataset.id;
   var name  = addBtn.dataset.name;
   var price = parseFloat(addBtn.dataset.price) || 0;
 
-  if (!cart[id]) cart[id] = { name: name, price: price, qty: 0 };
-  cart[id].qty += 1;
+  // find om varen allerede findes (Arrays + Loop)
+  var found = -1;
+  for (var i = 0; i < cart.length; i++) {
+    if (cart[i].id === id) { found = i; break; }
+  }
+  if (found > -1) { cart[found].qty += 1; }     // if-else
+  else { cart.push({ id: id, name: name, price: price, qty: 1 }); }
 
+  console.log('added', { id: id, name: name, price: price }); // Debugging
   render();
   openDrawer();
 };
 
-// Åbn/luk kurv-skuffen
+// Events: åbn/luk
 if (cartIcon) cartIcon.onclick = openDrawer;
 if (closeBtn) closeBtn.onclick = closeDrawer;
 if (backdrop) backdrop.onclick = closeDrawer;
 
 // Første visning
 render();
+
+// jQuery (kun hvis biblioteket er til stede)
+if (window.jQuery) {
+  // Samme event som ovenfor – vist med jQuery som eksempel
+  $('#cart-icon').on('click', openDrawer);
+}
