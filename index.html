@@ -11,7 +11,7 @@
   <script src="burger.js" defer></script>
 </head>
 <body>
-  <!-- Top Promotional Bars -->
+  <!-- Top Promo Bars -->
   <div class="pre-header">
     <a href="#" class="promo-banner">
       Bahne fejrer 60 års jubilæum! &rarr;
@@ -110,7 +110,8 @@
       <p class="subtitle">Limona Top • sort</p>
 
       <div class="price">
-        <strong class="price__now">359,40 kr.</strong>
+        <strong id="pdp-price" class="price__now">359,40 kr.</strong>
+
         <s class="price__before">599,00 kr.</s>
       </div>
 
@@ -144,7 +145,12 @@
         </div>
       </div>
 
-      <button id="add-to-cart" class="cta">Tilføj til kurv</button>
+      <button id="add-to-cart"
+        class="cta"
+        data-id="second-female-limona-top"
+        data-name="Second Female – Limona Top"
+        data-price="359.40">Tilføj til kurv</button>
+
       <p id="feedback" class="feedback" aria-live="polite"></p>
 
       <ul class="smallprint">
@@ -203,17 +209,16 @@
     </div>
   </footer>
 
-  <!-- CART DRAWER -->
-  <div id="cart-drawer" class="cart-drawer" aria-hidden="true" role="dialog" aria-labelledby="cart-title">
-    <div class="cart-backdrop" data-dismiss></div>
-    <aside class="cart-panel" role="document">
+  <!-- kurv -->
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-backdrop"></div>
+    <aside class="cart-panel">
       <header class="cart-header">
-        <h3 id="cart-title">Din kurv</h3>
-        <button class="cart-close" aria-label="Luk kurv">×</button>
+        <h3>Din kurv</h3>
+        <button class="cart-close">×</button>
       </header>
-
       <div id="cart-empty" class="cart-empty">Din kurv er tom.</div>
-      <div id="cart-items" class="cart-items" aria-live="polite"></div>
+      <div id="cart-items" class="cart-items"></div>
 
       <footer class="cart-footer">
         <div class="cart-total">

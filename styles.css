@@ -479,7 +479,7 @@ body{
   border-radius: 12px; /* hvis du vil matche knappens blødhed */
 }
 
-/* --- Cart Drawer --- */
+/* --- kurv --- */
 .cart-drawer{position:fixed; inset:0; display:none; z-index:9999;}
 .cart-drawer.is-open{display:block;}
 .cart-backdrop{position:absolute; inset:0; background:rgba(0,0,0,.45);}
@@ -504,10 +504,9 @@ body{
 .cart-items{padding:.5rem 1rem; overflow:auto;}
 
 .cart-item{
-  display:grid; grid-template-columns:64px 1fr auto; gap:.75rem;
+  display:grid; grid-template-columns: 1fr auto; gap:.75rem;
   align-items:center; padding:.9rem 0; border-bottom:1px solid var(--line);
 }
-.cart-item__img{width:64px; height:80px; object-fit:cover; border-radius:8px; border:1px solid var(--line);}
 .cart-item__title{font-weight:600; margin:0 0 .15rem;}
 .cart-item__meta{color:var(--muted); font-size:.9rem; margin:0 0 .25rem;}
 .cart-item__right{display:flex; flex-direction:column; align-items:flex-end; gap:.4rem; min-width:120px;}
@@ -516,7 +515,10 @@ body{
 .cart-footer{margin-top:auto; border-top:1px solid var(--line); padding:1rem;}
 .cart-total{display:flex; align-items:center; justify-content:space-between;}
 
-/* Counter badge look */
+#cart-icon { cursor: pointer; }
+
+
+/* kurv tæller */
 .cart-counter{
   display:none; /* shown by JS once > 0 */
   align-items:center; justify-content:center;
@@ -524,7 +526,7 @@ body{
   background:#111; color:#fff; font-size:.75rem; font-weight:700;
 }
 
-/* Small screens: drawer full width */
+/* Små skærme: kurv fylder det hele */
 @media (max-width: 480px){
   .cart-panel{width:100%;}
 }
