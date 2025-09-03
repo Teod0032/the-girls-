@@ -1,6 +1,6 @@
 // --- KURV (min egen forklaring) ---
 
-//General inspiration og hjælp er fra Chatpgt (mange beskedder frem og tilbage inklusiv sprøgsmål og efterspørgsler på kodegeneration (Én promt er derfor ikke aktuel ))
+//General inspiration og hjælp er fra Chatpgt (mange beskedder frem og tilbage inklusiv spørgsmål og efterspørgsler på kodegeneration i form af eksempler, alternativer, tests mm. (Én promt er derfor ikke aktuel ))
 
 // Her henter jeg de elementer, jeg skal bruge fra siden
 var addBtn      = document.getElementById('add-to-cart');   // knappen “Læg i kurv”
