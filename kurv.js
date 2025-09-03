@@ -47,9 +47,7 @@ function render(){
       + '</div>';
   }
 
-  // Badge ved ikonet: vis tallet hvis der er noget i kurven
-  cartCounter.textContent = qty;
-  cartCounter.style.display = qty ? 'inline-block' : 'none';
+ 
 
   // Subtotalen nederst i skuffen
   subtotalEl.textContent = money(subtotal);
