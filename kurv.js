@@ -1,4 +1,3 @@
-// kurv.js
 document.addEventListener('DOMContentLoaded', () => {
     // Elements
     const addBtn      = document.getElementById('add-to-cart');
