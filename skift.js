@@ -51,8 +51,6 @@ function showVariant(color){
   });
 }
 
-
-
 // Funktion til at lave en thumbnail-knap //
 function createThumb(src, isActive) {
   const btn = document.createElement("button");
@@ -84,5 +82,5 @@ document.querySelectorAll(".color-option").forEach(btn => {
     });
   });
 
-// Når siden starter, kaldes funktionen direkte med "sort", så standardvisningen altid er den sorte trøje.
+  // Når siden starter, kaldes funktionen direkte med "sort", så standardvisningen altid er den sorte trøje.
 showVariant("sort");
