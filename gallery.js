@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const thumbsWrap = document.querySelector('.thumbs');    // boksen med alle thumbnails
   if (!gallery || !mainImg || !thumbsWrap) return;         // hvis noget mangler, stopper jeg
 
-  // --- HJÆLPERE: hent altid de thumbs der findes lige nu ---
   // Jeg henter “live” thumbnails hver gang (så farveskift/udskiftning virker)
   const getThumbs = () => Array.from(thumbsWrap.querySelectorAll('.thumb'));
 
