@@ -1,4 +1,6 @@
 //Caroline
+console.log("The file is working!")
+
 //liste over mulige størrelser
 const str = ["XS","S","M","L","XL"];
 
