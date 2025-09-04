@@ -1,18 +1,18 @@
 // Freja 
 
-// Insiration hentet fra
+// Inspiration hentet fra
 // https://www.w3schools.com/js/tryit.asp?filename=tryjs_const_object
 // Oprettelse af objekt "VariantData" med to farvevarianter sort og hvid
 // Hver variant indholder navn, pris og en liste af billeder.
 const variantData = {
     sort: {
-      name: "Limona Top • sort",
+      name: "Limona Top • Sort",
       priceNow: 359.40,
       priceBefore: 599.00,
       images: ["img/top-black-1.jpg","img/top-black-2.jpg","img/top-black-3.jpg","img/top-black-4.jpg"]
     },
     hvid: {
-      name: "Limona Top • hvid",
+      name: "Limona Top • Hvid",
       priceNow: 359.40,
       priceBefore: 599.00,
       images: ["img/top-white-1.jpg","img/top-white-2.jpg","img/top-white-3.jpg","img/top-white-4.jpg"]
