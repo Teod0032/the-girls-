@@ -23,7 +23,7 @@ function money(n){ //n er en placeholder for kommende tal
   return 'kr ' + amount;
 }
 
-// To små funktioner til at åbne/lukke skuffen
+// To små funktioner til at fortælle resten af koden om skuffen er åben eller lukket
 function openDrawer(){ drawer.classList.add('is-open'); }
 function closeDrawer(){ drawer.classList.remove('is-open'); }
 
