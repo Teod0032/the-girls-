@@ -64,9 +64,9 @@ function render(){
 
 // Når jeg klikker “Læg i kurv”, lægger jeg 1 stk af den vare i kurven
 if (addBtn) addBtn.onclick = function(){
-  var id    = addBtn.dataset.id;        // jeg bruger id til at slå linjer sammen
-  var name  = addBtn.dataset.name;      // dette er navnet jeg viser
-  var price = addBtn.dataset.price * 1; // her laver jeg værdien til et tal
+  var id    = addBtn.getAttribute('data-id');
+  var name  = addBtn.getAttribute('data-name');
+  var price = addBtn.getAttribute('data-price') * 1; // *1 gør det til et tal
 
   // Jeg tjekker om varen allerede ligger i kurven
   var found = -1;
