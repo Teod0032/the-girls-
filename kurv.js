@@ -18,7 +18,7 @@ var itemsEl     = document.getElementById('cart-items');    // her lægger jeg v
 var cart = [];
 
 // Jeg laver en lille hjælper til at vise kroner pænt
-function money(n){
+function money(n){ //n er en placeholder for kommende tal
   let amount = (n * 1).toFixed(2);     // jeg sørger for 2 decimaler
   return 'kr ' + amount;
 }
