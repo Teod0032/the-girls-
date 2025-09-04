@@ -85,7 +85,7 @@ for (var i = 0; i < cart.length; i++) {
   if (found > -1) {
     cart[found].qty = cart[found].qty + 1;
   } else {
-    cart.push({ id: id, name: name, price: price, qty: 1 });
+    cart.push({ id: id, name: name, price: price, qty: 1 }); //pusher dette til car arrayet
   }
 
   // Jeg tjekker i konsollen hvad jeg lige lagde i
