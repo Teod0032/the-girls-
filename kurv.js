@@ -34,10 +34,10 @@ function render(){
   var html = '';          // den tekst jeg lægger ind i items-området
 
   // Jeg går igennem alle linjerne i kurven
-  for (var i = 0; i < cart.length; i++) {
+  for (var i = 0; i < cart.length; i++) { //fortsætter med at kigge i array indtil den har været alle elementer igennem
     var it = cart[i];
     qty = qty + it.qty;
-    subtotal = subtotal + it.price * it.qty;
+    subtotal = subtotal + it.price * it.qty; 
 
     // Jeg viser kun navn, pris pr. stk og antal (helt simpelt)
     html = html
