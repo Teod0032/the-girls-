@@ -1,101 +1,88 @@
 // Rebecca
-// ==================== VARIABLER, DOM & OBJEKTER ====================
-// [Krav: Variabler & typer, Variable scope (const/let), DOM, Objekter]
-const burger  = document.querySelector('.burger');      // DOM-udvælgelse ⇒ DOM + Objekter
-const nav     = document.getElementById('mobile-nav');  // DOM-udvælgelse ⇒ DOM + Objekter
-const overlay = document.querySelector('.overlay');     // DOM-udvælgelse ⇒ DOM + Objekter
-const navCloseBtn= document.querySelector('.nav-close');   // DOM-udvælgelse ⇒ DOM + Objekter
+//inspiration  https://www.w3schools.com/howto/howto_js_mobile_navbar.asp 
 
-// [Krav: Variabler & typer, Variable scope (let), Scope demonstration]
+// ==================== VARIABLER ====================
+// Henter elementer fra DOM'en
+const burger  = document.querySelector('.burger');
+const nav     = document.getElementById('mobile-nav');
+const overlay = document.querySelector('.overlay');
+const navCloseBtn = document.querySelector('.nav-close');
+
+// Gemmer sidste element med fokus
 let lastFocused = null;
 
 // ==================== FUNKTIONER ====================
-// [Krav: Funktioner, DOM, Objekter, Events (indirekte via addEventListener senere)]
+// Åbn menuen
 function openMenu() {
-  // [Krav: Variabler & scope] gemmer sidste fokuserede element
-  lastFocused = document.activeElement;
+  lastFocused = document.activeElement; // husk hvilket element der havde fokus
 
-  // [Krav: DOM + Objekter] attributter & classList manipulation
   burger.setAttribute('aria-expanded', 'true');
   nav.classList.add('open');
   nav.setAttribute('aria-hidden', 'false');
 
-  // [Krav: DOM + Objekter] style-tilstand via class + skjul/vis
   overlay.hidden = false;
-  requestAnimationFrame(() => overlay.classList.add('is-visible')); // [Krav: Funktioner (callback)]
+  requestAnimationFrame(() => overlay.classList.add('is-visible')); // vis overlay med animation
 
-  // [Krav: DOM] fokus-håndtering og selektor for fokusérbare elementer
+  // Sæt fokus på første element i menuen
   const first = nav.querySelector('input, a, button, [tabindex]:not([tabindex="-1"])');
-  (first || nav).focus({ preventScroll: true }); // [Krav: Operatorer (||), Funktioner]
+  (first || nav).focus({ preventScroll: true });
 
-  // [Krav: Events] global keydown når menu er åben
+  // Luk med Escape-tasten
   document.addEventListener('keydown', onKeydown);
 }
 
-// [Krav: Funktioner, DOM, Objekter]
+// Luk menuen
 function closeMenu() {
-  burger.setAttribute('aria-expanded', 'false'); // [DOM + Objekter]
-  nav.classList.remove('open');                  // [DOM + Objekter]
-  nav.setAttribute('aria-hidden', 'true');       // [DOM + Objekter]
+  burger.setAttribute('aria-expanded', 'false');
+  nav.classList.remove('open');
+  nav.setAttribute('aria-hidden', 'true');
 
-  overlay.classList.remove('is-visible');        // [DOM + Objekter]
-  // [Krav: Funktioner + Debug timing] vent på CSS-transition
-  setTimeout(() => { overlay.hidden = true; }, 220);
+  overlay.classList.remove('is-visible');
+  setTimeout(() => { overlay.hidden = true; }, 220); // vent på animation
 
-  // [Krav: Events] fjern keydown-lytter
   document.removeEventListener('keydown', onKeydown);
 
-  // [Krav: Kontrolstruktur (if)] + DOM fokus
+  // Giv fokus tilbage til burger-knappen
   if (lastFocused) burger.focus({ preventScroll: true });
 }
 
-// [Krav: Funktioner, Operatorer, DOM]
+// Skift mellem åben/lukket menu
 function toggleMenu() {
-  // [Krav: Operatorer (===), DOM]
   const isOpen = burger.getAttribute('aria-expanded') === 'true';
-  // [Krav: Operatorer (ternary ? :), Kontrolstruktur (if-else i udtryksform)]
   isOpen ? closeMenu() : openMenu();
 }
 
-// [Krav: Funktioner, Events, Kontrolstruktur (if)]
+// Luk menu med Escape-tasten
 function onKeydown(e){
-  // [Krav: Operatorer (===)] + [Krav: Kontrolstruktur (if)]
   if (e.key === 'Escape') {
     e.preventDefault();
     closeMenu();
   }
 }
 
-// ==================== INIT, PLACERING & DEBUGGING ====================
-// [Krav: Placering af udførelse af JS] sikrer at DOM er klar før eventbinding
-// [Krav: Fejlfinding (debugging)] console.log & console.warn
+// ==================== INIT ====================
+// Kør først når DOM er indlæst
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('[nav] init'); // Debug: startmarkør
+  console.log('[nav] init'); // viser at scriptet er startet
 
-  // [Krav: Kontrolstruktur (if-else)] + Debug: tjek nødvendig markup
+  // Stop hvis vigtige elementer mangler
   if (!burger || !nav || !overlay) {
     console.warn('[nav] Missing elements', { burger: !!burger, nav: !!nav, overlay: !!overlay });
-    return; // [Krav: Kontrolstruktur] stop hvis kritisk DOM mangler
+    return;
   }
 
-  // ==================== EVENTS ====================
-  // [Krav: Events] klik-hændelser
+  // Klik-hændelser
   burger.addEventListener('click', toggleMenu);
   overlay.addEventListener('click', closeMenu);
-  // [Krav: Optional chaining (Operatorer) viser robusthed]
   navCloseBtn?.addEventListener('click', closeMenu);
 
-  // ==================== ARRAYS & LOOPS ====================
-  // [Krav: Arrays] NodeList → Array for iteration
-  // [Krav: Loops] for..of over interaktive elementer
-  const interactive = Array.from(nav.querySelectorAll('a, button')); // Arrays + DOM
-  for (const el of interactive) { // Loops
-    el.addEventListener('click', closeMenu); // Events
+  // Luk når man klikker på links/knapper i menuen
+  const interactive = Array.from(nav.querySelectorAll('a, button'));
+  for (const el of interactive) {
+    el.addEventListener('click', closeMenu);
   }
 
-  // ==================== EVENTS + KONTROLSTRUKTUR ====================
-  // [Krav: Events] window resize
-  // [Krav: Kontrolstruktur (if)] + [Operatorer (>)]
+  // Luk menuen automatisk ved desktop-størrelse
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) closeMenu();
   });
