@@ -1,23 +1,25 @@
 // Freja 
 
-// Insiration hentet fra
-// https://www.w3schools.com/js/tryit.asp?filename=tryjs_const_object
-// Oprettelse af objekt "VariantData" med to farvevarianter sort og hvid
-// Hver variant indholder navn, pris og en liste af billeder.
-const variantData = {
-    sort: {
-      name: "Limona Top • sort",
-      priceNow: 359.40,
-      priceBefore: 599.00,
-      images: ["img/top-black-1.jpg","img/top-black-2.jpg","img/top-black-3.jpg","img/top-black-4.jpg"]
-    },
-    hvid: {
-      name: "Limona Top • hvid",
-      priceNow: 359.40,
-      priceBefore: 599.00,
-      images: ["img/top-white-1.jpg","img/top-white-2.jpg","img/top-white-3.jpg","img/top-white-4.jpg"]
-    }
+
+// Oprettelse af et objekt, der bruges til at gemme information om varianten sort og hvid
+const variantData = {};
+
+// Finder alle HTML-elementer med klassen .gallery
+document.querySelectorAll(".gallery").forEach(gallery => {
+  const variant = gallery.dataset.variant; // fx "sort" eller "hvid"
+  const thumbs = gallery.querySelectorAll(".thumb");
+  const images = Array.from(thumbs).map(btn => btn.dataset.img);
+
+  // Oprettelse af objekt "VariantData" med to farvevarianter sort og hvid
+  // Hver variant indholder navn, pris og en liste af billeder.
+  variantData[variant] = {
+    // Koden laver et læsbart et produktnavn med stort begyndelsesbogstav, baseret på hvilken variant der vælges.
+    name: `Limona Top • ${variant.charAt(0).toUpperCase() + variant.slice(1)}`, 
+    priceNow: 359.40,
+    priceBefore: 599.00,
+    images: images
   };
+});
 
 // Funktion til at skifte variant, når en farve vælges 
 function showVariant(color){

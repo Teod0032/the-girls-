@@ -1,4 +1,4 @@
-// --- KURV ---
+// --- KURV (min egen forklaring) ---
 
 //General inspiration og hjælp er fra Chatpgt (mange beskedder frem og tilbage inklusiv spørgsmål og efterspørgsler på kodegeneration i form af eksempler, alternativer, tests mm. (Én promt er derfor ikke aktuel ))
 
