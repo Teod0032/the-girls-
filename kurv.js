@@ -68,11 +68,18 @@ if (addBtn) addBtn.onclick = function(){
   var name  = addBtn.getAttribute('data-name');
   var price = addBtn.getAttribute('data-price') * 1; // *1 gør det til et tal
 
-  // Jeg tjekker om varen allerede ligger i kurven
-  var found = -1;
-  for (var i = 0; i < cart.length; i++) {
-    if (cart[i].id === id) { found = i; break; }
+  // Tjek om varen (med dette id) allerede ligger i kurven
+// 'found' = -1 betyder "ikke fundet". Hvis vi finder den, sætter vi 'found' til dens position i arrayet.
+var found = -1;
+
+// Gå igennem alle linjer i kurven én for én
+for (var i = 0; i < cart.length; i++) {
+  // Sammenlign id'et på linjen med id'et på varen, vi er ved at lægge i kurv
+  if (cart[i].id === id) {
+    found = i;   // husk hvor varen ligger, så vi kan øge antal i stedet for at lave en ny linje
+    break;       // stop søgningen nu – vi har fundet den
   }
+}
 
   // Hvis den findes, lægger jeg 1 til antal. Ellers opretter jeg en ny linje.
   if (found > -1) {
