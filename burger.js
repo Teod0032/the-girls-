@@ -4,7 +4,7 @@
 const burger  = document.querySelector('.burger');      // DOM-udvælgelse ⇒ DOM + Objekter
 const nav     = document.getElementById('mobile-nav');  // DOM-udvælgelse ⇒ DOM + Objekter
 const overlay = document.querySelector('.overlay');     // DOM-udvælgelse ⇒ DOM + Objekter
-const closeBtn= document.querySelector('.nav-close');   // DOM-udvælgelse ⇒ DOM + Objekter
+const navCloseBtn= document.querySelector('.nav-close');   // DOM-udvælgelse ⇒ DOM + Objekter
 
 // [Krav: Variabler & typer, Variable scope (let), Scope demonstration]
 let lastFocused = null;
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   burger.addEventListener('click', toggleMenu);
   overlay.addEventListener('click', closeMenu);
   // [Krav: Optional chaining (Operatorer) viser robusthed]
-  closeBtn?.addEventListener('click', closeMenu);
+  navCloseBtn?.addEventListener('click', closeMenu);
 
   // ==================== ARRAYS & LOOPS ====================
   // [Krav: Arrays] NodeList → Array for iteration
