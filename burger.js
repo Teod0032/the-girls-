@@ -1,3 +1,4 @@
+//Rebecca
 // ==================== VARIABLER, DOM & OBJEKTER ====================
 // [Krav: Variabler & typer, Variable scope (const/let), DOM, Objekter]
 const burger  = document.querySelector('.burger');      // DOM-udvælgelse ⇒ DOM + Objekter
