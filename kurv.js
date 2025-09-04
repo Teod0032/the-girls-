@@ -27,7 +27,7 @@ function money(n){ //n er en placeholder for kommende tal
 function openDrawer(){ drawer.classList.add('is-open'); }
 function closeDrawer(){ drawer.classList.remove('is-open'); }
 
-// Her opdaterer jeg hele kurven på skærmen
+// Her opdaterer jeg hele kurven på skærmen (midlertidig beholder)
 function render(){
   var qty = 0;            // samlet antal
   var subtotal = 0;       // samlet pris
