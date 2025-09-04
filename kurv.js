@@ -13,7 +13,7 @@ var subtotalEl  = document.getElementById('cart-subtotal'); // feltet hvor subto
 var emptyEl     = document.getElementById('cart-empty');    // “Din kurv er tom”
 var itemsEl     = document.getElementById('cart-items');    // her lægger jeg varelinjerne ind
 
-// Her gemmer jeg kurven som en liste af linjer
+// Her gemmer jeg kurven som en liste af linjer (tom array)
 // Hver linje har id, navn, pris og antal
 var cart = [];
 
