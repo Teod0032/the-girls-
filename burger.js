@@ -1,7 +1,7 @@
 // Rebecca
 //inspiration  https://www.w3schools.com/howto/howto_js_mobile_navbar.asp 
 
-// ==================== VARIABLER ====================
+
 // Henter elementer fra DOM'en
 const burger  = document.querySelector('.burger');
 const nav     = document.getElementById('mobile-nav');
@@ -11,7 +11,7 @@ const navCloseBtn = document.querySelector('.nav-close');
 // Gemmer sidste element med fokus
 let lastFocused = null;
 
-// ==================== FUNKTIONER ====================
+
 // Åbn menuen
 function openMenu() {
   lastFocused = document.activeElement; // husk hvilket element der havde fokus
@@ -60,7 +60,7 @@ function onKeydown(e){
   }
 }
 
-// ==================== INIT ====================
+
 // Kør først når DOM er indlæst
 document.addEventListener('DOMContentLoaded', () => {
   console.log('[nav] init'); // viser at scriptet er startet
