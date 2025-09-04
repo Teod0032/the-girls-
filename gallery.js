@@ -86,13 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowRight') show(index + 1); // højre pil = næste
   });
 
-  // --- HOLD ØJE MED ÆNDRINGER I THUMBNAILS ---
+
   // Hvis thumbs bliver udskiftet (fx ved farveskift), nulstiller jeg til første
   const mo = new MutationObserver(() => {
     index = 0;      // start fra begyndelsen igen
     show(0);        // vis første billede i de nye thumbs
   });
-  // Jeg observerer ændringer i børnelisten (og undernoder) i thumbsWrap
+  // Jeg observerer ændringer i childlist (og undernoder) i thumbsWrap
   mo.observe(thumbsWrap, { childList: true, subtree: true });
 
   // --- STARTVISNING ---
