@@ -1,3 +1,4 @@
+//Maria
 // --- GALLERI (min egen forklaring) ---
 // General inspiration og hjælp er fra ChatGPT (mange beskeder frem og tilbage).
 // Kommentarerne forklarer kort hvad der sker linje for linje – uden at ændre på koden.
